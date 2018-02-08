@@ -1,0 +1,15 @@
+﻿
+@model FirstGitProject.Models.Home
+
+@{
+    ViewBag.Title = Model.Genre;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Genre</h2>
+<ul>
+    <li>Genre: @Model.Genre.Name</li>
+    <li>Address: @Model.Address</li>
+    <li>City: @Model.City</li>
+    <li>State: @Model.State</li>
+</ul>

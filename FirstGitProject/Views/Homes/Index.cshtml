@@ -1,0 +1,26 @@
+﻿
+@model IEnumerable<FirstGitProject.Models.Home>
+
+@{
+    ViewBag.Title = "Homes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Homes</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Home</th>
+        <th>Genre</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var home in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(home.Address, "Details", "Homes", new { id = home.Id }, null)</td>
+                <td>@home.Genre.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

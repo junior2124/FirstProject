@@ -25,5 +25,9 @@ namespace FirstGitProject.Models
         public int LotSize { get; set; }
 
         public decimal Price { get; set; }
+
+        public Genre Genre { get; set; }
+
+        public byte GenreId { get; set; }
     }
 }
