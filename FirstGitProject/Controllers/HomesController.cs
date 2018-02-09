@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using FirstGitProject.Models;
 using FirstGitProject.ViewModels;
+using Microsoft.Owin.Security.Provider;
 
 namespace FirstGitProject.Controllers
 {
@@ -37,7 +38,7 @@ namespace FirstGitProject.Controllers
 
             var viewModel = new HomeFormViewModel
             {
-                Genres = genres
+                 Genres = genres
             };
 
             return View("HomeForm", viewModel);
@@ -50,9 +51,8 @@ namespace FirstGitProject.Controllers
             if (home == null)
                 return HttpNotFound();
 
-            var viewModel = new HomeFormViewModel
+            var viewModel = new HomeFormViewModel(home)
             {
-                Home = home,
                 Genres = _context.Genres.ToList()
             };
 
@@ -90,8 +90,19 @@ namespace FirstGitProject.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Home home)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new HomeFormViewModel(home)
+                {
+                    Genres = _context.Genres.ToList()
+                };
+
+                return View("HomeForm", viewModel);
+            }
+
             if (home.Id == 0)
             {
                // home.DateAdded = DateTime.Now;

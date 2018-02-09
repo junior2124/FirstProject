@@ -9,26 +9,34 @@
 
 @using (Html.BeginForm("Save", "Homes"))
 {
+    @Html.ValidationSummary(true, "Please fix the following errors.")
     <div class="form-group">
-        @Html.LabelFor(m => m.Home.Address)
-        @Html.TextBoxFor(m => m.Home.Address, new { @class = "form-control" })
+        @Html.LabelFor(m => m.Address)
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Home.City)
-        @Html.TextBoxFor(m => m.Home.City, new { @class = "form-control" })
+        @Html.LabelFor(m => m.City)
+        @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Home.State)
-        @Html.TextBoxFor(m => m.Home.State, new { @class = "form-control" })
+        @Html.LabelFor(m => m.State)
+        @Html.TextBoxFor(m => m.State, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Home.Zip)
-        @Html.TextBoxFor(m => m.Home.Zip, new { @class = "form-control" })
+        @Html.LabelFor(m => m.Zip)
+        @Html.TextBoxFor(m => m.Zip, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Home.GenreId)
-        @Html.DropDownListFor(m => m.Home.GenreId, new SelectList(Model.Genres, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.LabelFor(m => m.GenreId)
+        @Html.DropDownListFor(m => m.GenreId, new SelectList(Model.Genres, "Id", "Name"), "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.GenreId)
     </div>
-    @Html.HiddenFor(m => m.Home.Id)
+    @Html.HiddenFor(m => m.Id)
+    @Html.AntiForgeryToken()
     <button type="submit" class="btn btn-primary">Save</button>
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
 }
