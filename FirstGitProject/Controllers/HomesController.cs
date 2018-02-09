@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using  System.Data.Entity;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,6 +29,34 @@ namespace FirstGitProject.Controllers
             var homes = _context.Homes.Include(m => m.Genre).ToList();
 
             return View(homes);
+        }
+
+        public ViewResult New()
+        {
+            var genres = _context.Genres.ToList();
+
+            var viewModel = new HomeFormViewModel
+            {
+                Genres = genres
+            };
+
+            return View("HomeForm", viewModel);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var home = _context.Homes.SingleOrDefault(c => c.Id == id);
+
+            if (home == null)
+                return HttpNotFound();
+
+            var viewModel = new HomeFormViewModel
+            {
+                Home = home,
+                Genres = _context.Genres.ToList()
+            };
+
+            return View("HomeForm", viewModel);
         }
 
         public ActionResult Details(int id)
@@ -58,6 +87,31 @@ namespace FirstGitProject.Controllers
             };
 
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Home home)
+        {
+            if (home.Id == 0)
+            {
+               // home.DateAdded = DateTime.Now;
+                _context.Homes.Add(home);
+            }
+            else
+            {
+                var homeInDb = _context.Homes.Single(m => m.Id == home.Id);
+                homeInDb.Address = home.Address;
+                homeInDb.City = home.City;
+                homeInDb.State = home.State;
+                homeInDb.Zip = home.Zip;
+                homeInDb.GenreId = home.GenreId;
+               
+            }
+
+            _context.SaveChanges();
+
+
+            return RedirectToAction("Index", "Homes");
         }
     }
 }

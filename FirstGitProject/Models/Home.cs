@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -26,8 +27,11 @@ namespace FirstGitProject.Models
 
         public decimal Price { get; set; }
 
+        [Display (Name = "Genre")]
+        
         public Genre Genre { get; set; }
 
+        [Required]
         public byte GenreId { get; set; }
     }
 }
