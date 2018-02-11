@@ -22,7 +22,7 @@ namespace FirstGitProject.Models
         public byte MembershipTypeId { get; set; }
 
         [Display(Name = "Date of Birth")]
-        [Min18YearsIfAMember]
+        
         public DateTime? Birthdate { get; set; }
     }
 }
