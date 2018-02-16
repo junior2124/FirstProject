@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -21,7 +22,10 @@ namespace FirstGitProject.Controllers.Api
 
         public IEnumerable<HomeDto> GetHomes()
         {
-            return _context.Homes.ToList().Select(Mapper.Map<Home, HomeDto>);
+            return _context.Homes
+                .Include(m => m.Genre)
+                .ToList()
+                .Select(Mapper.Map<Home, HomeDto>);
         }
 
         public IHttpActionResult GetHome(int id)

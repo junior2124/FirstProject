@@ -221,6 +221,7 @@
     <Compile Include="Controllers\HomesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
+    <Compile Include="Dtos\GenreDto.cs" />
     <Compile Include="Dtos\HomeDto.cs" />
     <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Global.asax.cs">
@@ -285,6 +286,10 @@
     <Compile Include="Migrations\201802090459006_UpdateCustomerObj.cs" />
     <Compile Include="Migrations\201802090459006_UpdateCustomerObj.Designer.cs">
       <DependentUpon>201802090459006_UpdateCustomerObj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802160332324_AddRequiredAddress.cs" />
+    <Compile Include="Migrations\201802160332324_AddRequiredAddress.Designer.cs">
+      <DependentUpon>201802160332324_AddRequiredAddress.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -601,6 +606,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802090459006_UpdateCustomerObj.resx">
       <DependentUpon>201802090459006_UpdateCustomerObj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802160332324_AddRequiredAddress.resx">
+      <DependentUpon>201802160332324_AddRequiredAddress.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

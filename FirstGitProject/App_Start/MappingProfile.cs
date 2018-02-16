@@ -18,6 +18,7 @@ namespace FirstGitProject.App_Start
             Mapper.CreateMap<Home, HomeDto>();
             Mapper.CreateMap<MembershipType, MembershipTypeDto>();
 
+            Mapper.CreateMap<Genre, GenreDto>();
             
             // Dto to Domain
             Mapper.CreateMap<CustomerDto, Customer>()

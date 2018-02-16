@@ -27,9 +27,9 @@ namespace FirstGitProject.Controllers
 
         public ViewResult Index()
         {
-            var homes = _context.Homes.Include(m => m.Genre).ToList();
+        
 
-            return View(homes);
+            return View();
         }
 
         public ViewResult New()
