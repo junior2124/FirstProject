@@ -5,6 +5,7 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using FirstGitProject.Models;
 using FirstGitProject.ViewModels;
 using Microsoft.Owin.Security.Provider;
@@ -27,11 +28,13 @@ namespace FirstGitProject.Controllers
 
         public ViewResult Index()
         {
-        
+            if (User.IsInRole(RoleName.CanManageHomes))
+                return View("List");
 
-            return View();
+            return View("ReadOnlyList");
         }
 
+        [Authorize(Roles = RoleName.CanManageHomes)]
         public ViewResult New()
         {
             var genres = _context.Genres.ToList();
