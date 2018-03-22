@@ -7,12 +7,12 @@ namespace FirstGitProject.Migrations
     {
         public override void Up()
         {
-            DropColumn("dbo.Customers", "Birthdate");
+            //DropColumn("dbo.Customers", "Birthdate");
         }
         
         public override void Down()
         {
-            AddColumn("dbo.Customers", "Birthdate", c => c.DateTime());
+            //AddColumn("dbo.Customers", "Birthdate", c => c.DateTime());
         }
     }
 }

@@ -29,7 +29,7 @@ namespace FirstGitProject.ViewModels
 
         public decimal Price { get; set; }
 
-        [Display(Name = "Genre")]
+        [Display(Name = "Type")]
         [Required]
         public byte? GenreId { get; set; }
         public string Title

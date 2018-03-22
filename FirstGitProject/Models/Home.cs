@@ -29,7 +29,7 @@ namespace FirstGitProject.Models
 
         public decimal Price { get; set; }
 
-        [Display (Name = "Genre")]
+        [Display (Name = "Type")]
         
         public Genre Genre { get; set; }
 
