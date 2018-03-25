@@ -138,11 +138,10 @@ namespace FirstGitProject.Controllers
                         var fileName = Path.GetFileName(photo.FileName);
                         var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
                         photo.SaveAs(path);
+                        home.ThumbnailFilePath = "~/Content/Images/" + fileName;
                     }
                 }
-
             }
-
 
             if (home.Id == 0)
             {
@@ -157,7 +156,7 @@ namespace FirstGitProject.Controllers
                 homeInDb.State = home.State;
                 homeInDb.Zip = home.Zip;
                 homeInDb.GenreId = home.GenreId;
-               
+                homeInDb.ThumbnailFilePath = home.ThumbnailFilePath;
             }
 
             _context.SaveChanges();

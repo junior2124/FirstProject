@@ -302,6 +302,10 @@
     <Compile Include="Migrations\201802172147489_AddDrivingLicenseToApplicationUser.Designer.cs">
       <DependentUpon>201802172147489_AddDrivingLicenseToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803250535434_add_thumbnailfilepath.cs" />
+    <Compile Include="Migrations\201803250535434_add_thumbnailfilepath.Designer.cs">
+      <DependentUpon>201803250535434_add_thumbnailfilepath.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -567,7 +571,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\" />
-    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -631,6 +634,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802172147489_AddDrivingLicenseToApplicationUser.resx">
       <DependentUpon>201802172147489_AddDrivingLicenseToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803250535434_add_thumbnailfilepath.resx">
+      <DependentUpon>201803250535434_add_thumbnailfilepath.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

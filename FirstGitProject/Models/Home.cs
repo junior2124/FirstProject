@@ -35,5 +35,7 @@ namespace FirstGitProject.Models
 
         [Required]
         public byte GenreId { get; set; }
+
+        public string ThumbnailFilePath { get; set; }
     }
 }

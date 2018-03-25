@@ -32,6 +32,9 @@ namespace FirstGitProject.ViewModels
         [Display(Name = "Type")]
         [Required]
         public byte? GenreId { get; set; }
+
+        public string ThumbnailFilePath { get; set; }
+
         public string Title
         {
             get
@@ -52,6 +55,7 @@ namespace FirstGitProject.ViewModels
             State = home.State;
             Zip = home.Zip;
             GenreId = home.GenreId;
+            ThumbnailFilePath = home.ThumbnailFilePath;
         }
     }
 }
