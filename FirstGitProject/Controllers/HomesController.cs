@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -94,7 +95,7 @@ namespace FirstGitProject.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Save(Home home)
+        public ActionResult Save(Home home, HttpPostedFileBase photo)
         {
             if (!ModelState.IsValid)
             {
@@ -105,6 +106,43 @@ namespace FirstGitProject.Controllers
 
                 return View("HomeForm", viewModel);
             }
+
+            if (photo != null)
+            {
+                if (!isValidContentType(photo.ContentType))
+                {
+                    var viewModel = new HomeFormViewModel(home)
+                    {
+                        Genres = _context.Genres.ToList()
+                    };
+
+                    ViewBag.Error = "Only JPG, JPEG, PNG & GIF files are allowed.";
+
+                    return View("HomeForm", viewModel);
+                }
+                else if (!isValidContentLength(photo.ContentLength))
+                {
+                    var viewModel = new HomeFormViewModel(home)
+                    {
+                        Genres = _context.Genres.ToList()
+                    };
+
+                    ViewBag.Error = "Your file is too large.";
+
+                    return View("HomeForm", viewModel);
+                }
+                else
+                {
+                    if (photo.ContentLength > 0)
+                    {
+                        var fileName = Path.GetFileName(photo.FileName);
+                        var path = Path.Combine(Server.MapPath("~/Content/Images"), fileName);
+                        photo.SaveAs(path);
+                    }
+                }
+
+            }
+
 
             if (home.Id == 0)
             {
@@ -126,6 +164,17 @@ namespace FirstGitProject.Controllers
 
 
             return RedirectToAction("Index", "Homes");
+        }
+
+        private bool isValidContentType(string contentType)
+        {
+            return contentType.Equals("image/png") || contentType.Equals("image/gif") || contentType.Equals("image/jpg") ||
+                   contentType.Equals("image/jpeg");
+        }
+
+        private bool isValidContentLength(int contentLength)
+        {
+            return ((contentLength / 1024) / 1024) < 1; // 1MB
         }
     }
 }

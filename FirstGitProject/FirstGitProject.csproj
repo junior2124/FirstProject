@@ -562,9 +562,12 @@
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Homes\HomeForm.cshtml" />
     <Content Include="Views\Homes\ReadOnlyList.cshtml" />
+    <Content Include="Views\Homes\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
